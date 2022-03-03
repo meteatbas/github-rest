@@ -3,7 +3,6 @@ package com.meteatbas.gitapi.web.rest;
 import com.meteatbas.gitapi.service.GitService;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -29,5 +28,10 @@ public class GitResource {
         return this.gitService.createGitCommit(multipartFile );
     }
 
+    @PutMapping("/update")
+    public ResponseEntity updateProject(
+            @RequestParam("file") MultipartFile multipartFile) throws GitAPIException, IOException {
 
+        return this.gitService.updateGitCommit(multipartFile );
+    }
 }
